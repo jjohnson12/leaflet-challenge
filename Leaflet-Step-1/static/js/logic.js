@@ -104,7 +104,7 @@ function renderMap(earthquakeURL, faultLinesURL) {
     let map = L.map("map", {
       center: [33.4942, -111.9261],
       zoom: 5,
-      layers: [outdoors, faultLines, eaerthquakes],
+      layers: [outdoors, faultLines, earthquakes],
       scrollWheelZoom: false
     });
 
@@ -155,5 +155,5 @@ function chooseColor(magnitude) {
 // Function to amplify circle size by earthquake magnitude
 //----------------------------------------------------------------------------
 function markerSize(magnitude) {
-  return magnitude * 5;
+  return magnitude * 4;
 }
