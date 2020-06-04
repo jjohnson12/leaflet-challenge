@@ -102,9 +102,9 @@ function renderMap(earthquakeURL, faultLinesURL) {
 
     // Create map, default settings: outdoors and faultLines layers display on load
     let map = L.map("map", {
-      center: [39.8283, -98.5785],
-      zoom: 3,
-      layers: [outdoors, faultLines],
+      center: [33.4942, -111.9261],
+      zoom: 5,
+      layers: [outdoors, faultLines, eaerthquakes],
       scrollWheelZoom: false
     });
 
@@ -146,10 +146,10 @@ function chooseColor(magnitude) {
             "greenyellow"; // <= 1 default
 }
 
-var heat = L.heatLayer(heatArray, {
-  radius: 20,
-  blur: 35
-}).addTo(myMap);
+// var heat = L.heatLayer(heatArray, {
+//   radius: 20,
+//   blur: 35
+// }).addTo(myMap);
 
 //----------------------------------------------------------------------------
 // Function to amplify circle size by earthquake magnitude
