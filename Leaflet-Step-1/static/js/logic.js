@@ -70,26 +70,12 @@ function renderMap(earthquakeURL, faultLinesURL) {
       }
     });
 
-    // Creates a Timeline layer containing the features array of the earthquakeData object
-    // Run getInterval function to get the time interval for each earthquake (length based on magnitude)
-    // Run the onEachEarthquake & onEachQuakeLayer functions once for each element in the array
-    let timelineLayer = L.timeline(earthquakeData, {
-      getInterval: function(feature) {
-        return {
-          start: feature.properties.time,
-          end: feature.properties.time + feature.properties.mag * 10000000
-        };
-      },
-      pointToLayer: onEachQuakeLayer,
-      onEachFeature: onEachEarthquake
-    });
-
-    // Sends earthquakes, fault lines and timeline layers to the createMap function
-    createMap(earthquakes, faultLines, timelineLayer);
+    // Sends earthquakes and fault lines layers to the createMap function
+    createMap(earthquakes, faultLines);
   }
 
   // Function to create map
-  function createMap(earthquakes, faultLines, timelineLayer) {
+  function createMap(earthquakes, faultLines) {
     // Define outdoors, satellite, and darkmap layers
     // Outdoors layer
     let outdoors = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
@@ -159,6 +145,11 @@ function chooseColor(magnitude) {
           magnitude > 1 ? "yellowgreen":
             "greenyellow"; // <= 1 default
 }
+
+var heat = L.heatLayer(heatArray, {
+  radius: 20,
+  blur: 35
+}).addTo(myMap);
 
 //----------------------------------------------------------------------------
 // Function to amplify circle size by earthquake magnitude
