@@ -1,18 +1,13 @@
-//----------------------------------------------------------------------------
+
 // variables for API endpoints
-//----------------------------------------------------------------------------
 let earthquakeURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson";
 
 let faultLinesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
 
-//----------------------------------------------------------------------------
 // Calls function to render map
-//----------------------------------------------------------------------------
 renderMap(earthquakeURL, faultLinesURL);
 
-//----------------------------------------------------------------------------
 // Function to render map
-//----------------------------------------------------------------------------
 function renderMap(earthquakeURL, faultLinesURL) {
 
   // Performs GET request for the earthquake URL
@@ -133,10 +128,8 @@ function renderMap(earthquakeURL, faultLinesURL) {
   }
 }
 
-//----------------------------------------------------------------------------
 // chooseColor function:
 // Returns color for each grade parameter using ternary expressions
-//----------------------------------------------------------------------------
 function chooseColor(magnitude) {
   return magnitude > 5 ? "red":
     magnitude > 4 ? "orange":
@@ -151,9 +144,7 @@ function chooseColor(magnitude) {
 //   blur: 35
 // }).addTo(myMap);
 
-//----------------------------------------------------------------------------
 // Function to amplify circle size by earthquake magnitude
-//----------------------------------------------------------------------------
 function markerSize(magnitude) {
   return magnitude * 4;
 }
